@@ -60,7 +60,7 @@ app.get('/api/db', async (req, res) => {
     res.json({ site, cats, products });
   } catch (err) {
     console.error('Error fetching data from Firestore:', err);
-    res.status(500).json({ error: 'Failed to retrieve database.' });
+    res.status(500).json({ error: err.message || 'Failed to retrieve database.' });
   }
 });
 
@@ -129,7 +129,7 @@ app.post('/api/db', async (req, res) => {
     res.json({ success: true });
   } catch (err) {
     console.error('Error saving data to Firestore:', err);
-    res.status(500).json({ error: 'Failed to save database.' });
+    res.status(500).json({ error: err.message || 'Failed to save database.' });
   }
 });
 

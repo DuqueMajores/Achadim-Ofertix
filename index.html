@@ -26,10 +26,14 @@ const DB='ofertix_db';let db=JSON.parse(localStorage.getItem(DB)||'null')||{site
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(db)
     });
-    if (!res.ok) throw new Error('Failed to save database state to cloud.');
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.error || 'Failed to save database state to cloud.');
+    }
+    toast('Sincronizado com a nuvem!');
   } catch (err) {
     console.error('Cloud save failed:', err);
-    toast('Salvo localmente. Sincronizando com a nuvem...');
+    toast('Erro de Sincronização: ' + err.message);
   }
 };
 async function syncFromCloud() {
