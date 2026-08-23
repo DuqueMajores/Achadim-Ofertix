@@ -1,11 +1,12 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ofertix — Achadinhos</title><style>
-:root{--y:#ffe600;--b:#3483fa;--d:#222;--bg:#f5f5f5;--green:#00a650}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--d)}header{background:var(--y);padding:12px 0;display:flex;align-items:center;position:sticky;top:0;z-index:10}header>*{flex-shrink:0}header .logo{margin-left:max(5%,calc((100vw - 1250px)/2 + 5%));}header .search{margin-right:max(5%,calc((100vw - 1250px)/2 + 5%));margin-left:24px}.logo{font-size:28px;font-weight:900;color:#333}.search{flex:1;display:flex;max-width:850px}.search input{flex:1;padding:13px;border:0;border-radius:6px 0 0 6px;font-size:15px}.search button{width:55px;border:0;background:#fff;border-left:1px solid #ddd;border-radius:0 6px 6px 0}.wrap{max-width:1250px;margin:auto;padding:22px 5%}.hero{background:linear-gradient(120deg,#3483fa,#2459a9);color:white;border-radius:10px;padding:28px;margin-bottom:18px}.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:0}.cats{display:flex;gap:9px;overflow:auto;padding-bottom:18px}.cat{border:0;background:white;padding:9px 15px;border-radius:20px;white-space:nowrap}.cat.on{background:#3483fa;color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.1);display:flex;flex-direction:column;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.12)}.pic{height:220px;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px;border-bottom:1px solid #f0f0f0}.pic img{max-width:100%;max-height:100%;object-fit:contain}.info{padding:12px;display:flex;flex-direction:column;gap:4px;flex-grow:1}.name{font-size:13.5px;color:#333;line-height:1.3;height:36px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:2px}.old{color:#888;text-decoration:line-through;font-size:12px;height:14px;margin-bottom:1px}.price-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.price{font-size:22px;font-weight:500;color:#333;margin:0}.discount{background:#00a650;color:#fff;font-size:10px;font-weight:700;padding:2px 4px;border-radius:3px;text-transform:uppercase}.install{color:#333;font-size:12px;margin-bottom:2px}.commission-tag{display:inline-block;color:#3483fa;background:#e6f0ff;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700;width:fit-content;margin-bottom:2px}.ship-container{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px}.ship{color:#00a650;background:#e9f8ef;border-radius:4px;padding:3px 6px;font-size:11px;font-weight:700}.full-badge{color:#00a650;font-weight:900;font-style:italic;font-size:11px;display:flex;align-items:center;gap:2px}.headline{color:#666;font-size:11px;line-height:1.2;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.buy{width:100%;margin-top:auto;background:var(--y);border:0;border-radius:6px;padding:10px;font-weight:700;color:#333;cursor:pointer;transition:background 0.2s}.buy:hover{background:#ecd000}.empty{grid-column:1/-1;text-align:center;padding:50px;color:#777}#admin{display:none;position:fixed;inset:0;background:#0008;z-index:20;overflow:auto}.modal{background:#fff;max-width:1100px;margin:25px auto;border-radius:12px;padding:22px}.close{float:right;border:0;background:#eee;padding:8px 12px;border-radius:6px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:13px}.field input,.field select,.field textarea{padding:10px;border:1px solid #ccc;border-radius:6px}.field textarea{min-height:90px}.btn{border:0;border-radius:6px;padding:10px 15px}.primary{background:#3483fa;color:#fff}.gray{background:#eee}.danger{background:#ffe9e9;color:#b00020}.actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}.admin-products{display:flex;gap:12px;overflow-x:auto;padding:12px 0}.admin-card{min-width:220px;border:1px solid #ddd;border-radius:8px;padding:9px;background:#fafafa}.admin-card img{width:100%;height:125px;object-fit:contain;background:white}.admin-card strong{display:block;font-size:14px;margin:7px 0}.admin-card small{color:#666}.mini{display:flex;gap:5px;margin-top:8px}.mini button{padding:7px;border:0;border-radius:5px}.cats-admin{display:flex;gap:8px;flex-wrap:wrap}.cat-admin{display:flex;align-items:center;gap:4px;background:#eee;border-radius:7px;padding:7px}.cat-admin button{border:0;background:#fff;border-radius:4px;padding:3px 6px}.toast{display:none;position:fixed;right:20px;bottom:20px;background:#222;color:#fff;padding:12px 16px;border-radius:7px;z-index:40}@media(max-width:700px){header{flex-wrap:wrap}.search{order:3;flex-basis:100%}.form{grid-template-columns:1fr}.field.full{grid-column:auto}}
+:root{--y:#ffe600;--b:#3483fa;--d:#222;--bg:#f5f5f5;--green:#00a650}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--d)}header{background:var(--y);padding:12px 0;display:flex;align-items:center;position:sticky;top:0;z-index:10}header>*{flex-shrink:0}header .logo{margin-left:max(5%,calc((100vw - 1250px)/2 + 5%));}header .search{margin-right:max(5%,calc((100vw - 1250px)/2 + 5%));margin-left:24px}.logo{font-size:28px;font-weight:900;color:#333}.search{flex:1;display:flex;max-width:850px}.search input{flex:1;padding:13px;border:0;border-radius:6px 0 0 6px;font-size:15px}.search button{width:55px;border:0;background:#fff;border-left:1px solid #ddd;border-radius:0 6px 6px 0}.wrap{max-width:1250px;margin:auto;padding:22px 5%}.hero{background:linear-gradient(120deg,#3483fa,#2459a9);color:white;border-radius:10px;padding:28px;margin-bottom:18px}.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:0}.cats{display:flex;gap:9px;overflow:auto;padding-bottom:18px}.cat{border:0;background:white;padding:9px 15px;border-radius:20px;white-space:nowrap}.cat.on{background:#3483fa;color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.1);display:flex;flex-direction:column;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;color:inherit}.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.12)}.pic{height:220px;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px;border-bottom:1px solid #f0f0f0}.pic img{max-width:100%;max-height:100%;object-fit:contain}.info{padding:12px 14px;display:flex;flex-direction:column;gap:3px;flex-grow:1}.name{font-size:14px;color:#333;line-height:1.3;height:36px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:2px}.old{color:#999;text-decoration:line-through;font-size:12px;height:14px;margin-bottom:2px}.price-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.price{font-size:24px;font-weight:400;color:#333;margin:0;line-height:1.15}.price sup{font-size:12px;font-weight:400;position:relative;top:-0.35em;margin-left:1px}.pix-discount{color:#00a650;font-size:13px;font-weight:500;margin-top:1px;margin-bottom:1px}.install{color:#666;font-size:13px;margin-top:1px;margin-bottom:2px}.promo-badge{display:inline-block;color:#3483fa;background:#e6f0ff;border-radius:3px;padding:3px 6px;font-size:11px;font-weight:700;width:fit-content;margin-top:2px;margin-bottom:2px}.ship-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;min-height:18px}.ship-text{color:#00a650;font-size:13px;font-weight:bold}.full-badge{color:#00a650;font-weight:900;font-style:italic;font-size:13px;display:inline-flex;align-items:center;gap:2px}.headline{color:#888;font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.empty{grid-column:1/-1;text-align:center;padding:50px;color:#777}#admin{display:none;position:fixed;inset:0;background:#0008;z-index:20;overflow:auto}.modal{background:#fff;max-width:1100px;margin:25px auto;border-radius:12px;padding:22px}.close{float:right;border:0;background:#eee;padding:8px 12px;border-radius:6px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:13px}.field input,.field select,.field textarea{padding:10px;border:1px solid #ccc;border-radius:6px}.field textarea{min-height:90px}.btn{border:0;border-radius:6px;padding:10px 15px}.primary{background:#3483fa;color:#fff}.gray{background:#eee}.danger{background:#ffe9e9;color:#b00020}.actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}.admin-products{display:flex;gap:12px;overflow-x:auto;padding:12px 0}.admin-card{min-width:220px;border:1px solid #ddd;border-radius:8px;padding:9px;background:#fafafa}.admin-card img{width:100%;height:125px;object-fit:contain;background:white}.admin-card strong{display:block;font-size:14px;margin:7px 0}.admin-card small{color:#666}.mini{display:flex;gap:5px;margin-top:8px}.mini button{padding:7px;border:0;border-radius:5px}.cats-admin{display:flex;gap:8px;flex-wrap:wrap}.cat-admin{display:flex;align-items:center;gap:4px;background:#eee;border-radius:7px;padding:7px}.cat-admin button{border:0;background:#fff;border-radius:4px;padding:3px 6px}.toast{display:none;position:fixed;right:20px;bottom:20px;background:#222;color:#fff;padding:12px 16px;border-radius:7px;z-index:40}@media(max-width:700px){header{flex-wrap:wrap}.search{order:3;flex-basis:100%}.form{grid-template-columns:1fr}.field.full{grid-column:auto}}
 
-.carousel{position:relative;width:calc(100% + 80px);margin-left:-40px;height:clamp(190px,26vw,325px);overflow:hidden;border-radius:14px;margin-bottom:18px;background:#ddd;box-shadow:0 5px 20px #0002}
+.carousel{position:relative;width:100%;margin-left:0;height:clamp(190px,26vw,325px);overflow:hidden;border-radius:14px;margin-bottom:18px;background:#ddd;box-shadow:0 5px 20px #0002}
 .slides{height:100%;display:flex;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
 .slide{min-width:100%;height:100%;position:relative}
 .slide img{width:100%;height:100%;display:block;object-fit:cover}.slide:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 42%,rgba(0,0,0,.10) 62%,rgba(0,0,0,.58) 100%);pointer-events:none}
-.slide-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#ffffffdd;color:#222;font-size:24px;cursor:pointer;box-shadow:0 2px 10px #0003;z-index:2}
+.slide-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#ffffffdd;color:#222;font-size:24px;cursor:pointer;box-shadow:0 2px 10px #0003;z-index:2;opacity:0;transition:opacity 0.2s ease-in-out}
+.carousel:hover .slide-btn{opacity:1}
 .slide-btn.prev{left:14px}.slide-btn.next{right:14px}
 .dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:7px;z-index:2}
 .dot{width:8px;height:8px;border:0;border-radius:50%;padding:0;background:#ffffff99;cursor:pointer}
@@ -13,7 +14,7 @@
 .brand-preview{display:flex;align-items:center;justify-content:center;min-height:58px;padding:10px;background:#fff8c9;border:1px dashed #bbb;border-radius:8px;margin-top:8px}
 .brand-preview img{max-height:58px;max-width:240px;object-fit:contain}
 .brand-preview .brand-text{font-size:28px;font-weight:900;color:#333}
-@media(max-width:700px){.carousel{width:100%;margin-left:0;border-radius:10px}.slide-btn{width:36px;height:36px;font-size:20px}}
+@media(max-width:700px){.carousel{width:100%;margin-left:0;border-radius:10px}.slide-btn{width:36px;height:36px;font-size:20px;opacity:1}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -33,7 +34,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const fdb = firebase.firestore();
 
-const DB='ofertix_db';let db=JSON.parse(localStorage.getItem(DB)||'null')||{site:{name:'OFERTIX',logo:''},cats:['Todos','Eletrônicos','Casa','Moda','Beleza','Ofertas'],products:[{id:1,name:'Fone Bluetooth Premium',link:'https://mercadolivre.com.br/',price:89.9,old:129.9,cat:'Eletrônicos',ship:'Frete grátis',install:'12x de R$ 8,99',commission:5,headline:'Excelente custo-benefício',desc:'Produto demonstrativo do protótipo.',img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',updated:Date.now()}]};let active='Todos',editId=null,slideTimer=null,slideIndex=0;db.site=db.site||{name:'OFERTIX',logo:''};db.cats=db.cats||['Todos'];db.products=db.products||[];
+const DB='ofertix_db';let db=JSON.parse(localStorage.getItem(DB)||'null')||{site:{name:'OFERTIX',logo:''},cats:['Todos','Eletrônicos','Casa','Moda','Beleza','Ofertas'],products:[{id:1,name:'Fone Bluetooth Premium',link:'https://mercadolivre.com.br/',price:89.9,old:129.9,cat:'Eletrônicos',ship:'Frete grátis',install:'12x de R$ 8,99',commission:5,headline:'Excelente custo-benefício',desc:'Produto demonstrativo do protótipo.',img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',updated:Date.now()}]};let active='Todos',editId=null,slideTimer=null,slideIndex=0;db.site=db.site||{name:'OFERTIX',logo:''};db.cats=db.cats||['Todos'];db.products=db.products||[];db.slides=db.slides||[];
 
 const save=async()=>{
   localStorage.setItem(DB,JSON.stringify(db));
@@ -44,7 +45,12 @@ const save=async()=>{
     // 2. Save categories
     await fdb.collection('metadata').doc('cats').set({ list: db.cats });
     
-    // 3. Save products
+    // 3. Save slides
+    if (db.slides && db.slides.length) {
+      await fdb.collection('metadata').doc('slides').set({ list: db.slides });
+    }
+    
+    // 4. Save products
     const batch = fdb.batch();
     db.products.forEach(p => {
       const docRef = fdb.collection('products').doc(String(p.id));
@@ -72,6 +78,7 @@ async function syncFromCloud() {
   try {
     const siteDoc = await fdb.collection('metadata').doc('site').get();
     const catsDoc = await fdb.collection('metadata').doc('cats').get();
+    const slidesDoc = await fdb.collection('metadata').doc('slides').get();
     const productsSnapshot = await fdb.collection('products').get();
     
     // Auto-seed if database is brand new
@@ -83,14 +90,16 @@ async function syncFromCloud() {
     
     const site = siteDoc.exists ? siteDoc.data() : { name: 'OFERTIX', logo: '' };
     const cats = catsDoc.exists ? catsDoc.data().list : ['Todos', 'Eletrônicos', 'Casa', 'Moda', 'Beleza', 'Ofertas'];
+    const slides = slidesDoc.exists ? slidesDoc.data().list : (typeof DEFAULT_SLIDES !== 'undefined' ? [...DEFAULT_SLIDES] : []);
     const products = [];
     productsSnapshot.forEach(doc => {
       products.push(doc.data());
     });
     
-    db = { site, cats, products };
+    db = { site, cats, products, slides };
     localStorage.setItem(DB, JSON.stringify(db));
     renderBrand();
+    renderCarousel();
     renderCats();
     render();
   } catch (err) {
@@ -106,15 +115,22 @@ function renderBrand(){
   if(db.site.logo) el.innerHTML=`<img src="${esc(db.site.logo)}" alt="${esc(db.site.name||'Logo')}" style="max-height:42px;max-width:220px;object-fit:contain">`;
   else el.textContent=db.site.name||'OFERTIX';
 }
+function getSlides() {
+  if (!db.slides || !db.slides.length) {
+    db.slides = [...SLIDES];
+  }
+  return db.slides;
+}
 function renderCarousel(){
   const c=document.getElementById('carousel');
   if(!c)return;
-  if(!SLIDES.length){c.style.display='none';return;}
+  const list = getSlides();
+  if(!list.length){c.style.display='none';return;}
   c.style.display='block';
-  c.innerHTML=`<div class="slides" id="slidesTrack">${SLIDES.map((src,i)=>`<div class="slide"><img src="${src}" alt="Slide ${i+1}"></div>`).join('')}</div>
+  c.innerHTML=`<div class="slides" id="slidesTrack">${list.map((src,i)=>`<div class="slide"><img src="${src}" alt="Slide ${i+1}"></div>`).join('')}</div>
     <button class="slide-btn prev" onclick="moveSlide(-1)" aria-label="Anterior">‹</button>
     <button class="slide-btn next" onclick="moveSlide(1)" aria-label="Próximo">›</button>
-    <div class="dots">${SLIDES.map((_,i)=>`<button class="dot ${i===0?'on':''}" onclick="goSlide(${i})" aria-label="Ir para slide ${i+1}"></button>`).join('')}</div>`;
+    <div class="dots">${list.map((_,i)=>`<button class="dot ${i===0?'on':''}" onclick="goSlide(${i})" aria-label="Ir para slide ${i+1}"></button>`).join('')}</div>`;
   slideIndex=0; updateSlide();
   clearInterval(slideTimer);
   slideTimer=setInterval(()=>moveSlide(1),5000);
@@ -125,7 +141,11 @@ function updateSlide(){
   track.style.transform=`translateX(-${slideIndex*100}%)`;
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===slideIndex));
 }
-function goSlide(i){slideIndex=(i+SLIDES.length)%SLIDES.length;updateSlide();}
+function goSlide(i){
+  const list = getSlides();
+  slideIndex=(i+list.length)%list.length;
+  updateSlide();
+}
 function moveSlide(d){goSlide(slideIndex+d);}
 function saveSite(){
   const f=new FormData(document.getElementById('siteForm'));
@@ -136,13 +156,22 @@ function saveSite(){
 }
 window.setCategory = function(c) { active = c; renderCats(); render(); };
 function renderCats(){cats.innerHTML=db.cats.map(c=>`<button class="cat ${active===c?'on':''}" onclick="setCategory('${esc(c.replace(/'/g, "\\'"))}')">${esc(c)}</button>`).join('')}
+function formatPriceHTML(val) {
+  let num = Number(val || 0);
+  let formatted = num.toFixed(2);
+  let parts = formatted.split('.');
+  let integerPart = Number(parts[0]).toLocaleString('pt-BR');
+  let centsPart = parts[1];
+  return `R$ ${integerPart}<sup style="font-size: 12px; font-weight: 500; vertical-align: super; position: relative; top: -0.35em; margin-left: 1.5px;">${centsPart}</sup>`;
+}
 function render(){
   let q=search.value.toLowerCase(),
       arr=db.products.filter(p=>(active==='Todos'||p.cat===active)&&(!q||JSON.stringify(p).toLowerCase().includes(q))).sort((a,b)=>b.updated-a.updated);
   
   products.innerHTML=arr.length?arr.map(p=>{
-    let pct = p.old && p.old > p.price ? Math.round(((p.old - p.price) / p.old) * 100) : 0;
-    let commText = p.commission ? `Comissão: R$ ${(p.price * p.commission / 100).toFixed(2).replace('.', ',')}` : '40% OFF Saldo no Mercado Pago';
+    let pix_desc = p.pix_discount !== undefined ? p.pix_discount : '10% OFF no Pix';
+    let promo = p.promo_tag !== undefined ? p.promo_tag : '20% OFF Saldo no Mercado Pago';
+    let hasFull = p.is_full !== false;
     
     return `<article class="card" onclick="window.open('${esc(p.link)}','_blank')">
       <div class="pic">
@@ -150,19 +179,18 @@ function render(){
       </div>
       <div class="info">
         <div class="name">${esc(p.name)}</div>
-        <div class="old">${p.old ? money(p.old) : ''}</div>
+        <div class="old">${p.old ? money(p.old) : '&nbsp;'}</div>
         <div class="price-container">
-          <span class="price">${money(p.price)}</span>
-          ${pct > 0 ? `<span class="discount">${pct}% OFF</span>` : ''}
+          <span class="price">${formatPriceHTML(p.price)}</span>
         </div>
+        ${pix_desc ? `<div class="pix-discount">${esc(pix_desc)}</div>` : ''}
         ${p.install ? `<div class="install">${esc(p.install)}</div>` : ''}
-        <div class="commission-tag">${commText}</div>
+        ${promo ? `<div class="promo-badge">${esc(promo)}</div>` : ''}
         <div class="ship-container">
-          ${p.ship ? `<span class="ship">${esc(p.ship)}</span>` : ''}
-          <span class="full-badge">⚡ FULL</span>
+          ${p.ship ? `<span class="ship-text">${esc(p.ship)}</span>` : ''}
+          ${hasFull ? `<span class="full-badge">⚡ FULL</span>` : ''}
         </div>
         <div class="headline">${esc(p.headline)}</div>
-        <button class="buy">Ver oferta</button>
       </div>
     </article>`;
   }).join(''):'<div class="empty">Nenhum achadinho encontrado.</div>';
@@ -180,10 +208,39 @@ function buildAdmin(){let p=db.products.find(x=>x.id===editId)||{};admin.innerHT
 </div>
 <div class="brand-preview">${db.site.logo?`<img src="${esc(db.site.logo)}" alt="Logo atual">`:`<span class="brand-text">${esc(db.site.name||'OFERTIX')}</span>`}</div>
 <div class="actions"><button class="btn primary">Salvar identidade</button><button type="button" class="btn gray" onclick="db.site={name:'OFERTIX',logo:''};save();renderBrand();buildAdmin();">Restaurar padrão</button></div>
-</form><hr><form id="pf"  onsubmit="submitP(event)"><div class="form">${field('Nome do produto','name',p.name)}${field('Link da oferta','link',p.link,'url')}${field('Preço atual','price',p.price,'number','step="0.01"')}${field('Preço original','old',p.old,'number','step="0.01"')}<div class="field"><label>Categoria</label><select name="cat">${db.cats.filter(x=>x!=='Todos').map(c=>`<option ${p.cat===c?'selected':''}>${esc(c)}</option>`).join('')}</select></div>${field('Frete / retirada grátis','ship',p.ship,'text','placeholder="Frete grátis, Retirada grátis ou ambos"')}${field('Parcelamento','install',p.install,'text','placeholder="Ex.: 10x de R$ 19,90 sem juros"')}${field('Comissão (%)','commission',p.commission,'number','step="0.01"')}${field('Frase de chamada','headline',p.headline)}<div class="field full"><label>Foto por link</label><input name="img" value="${esc(p.img)}" placeholder="https://..."></div><div class="field full"><label>Upload de foto</label><input id="file" type="file" accept="image/*"></div><div class="field full"><label>Descrição</label><textarea name="desc">${esc(p.desc)}</textarea></div></div><div class="actions"><button class="btn primary">${editId?'Salvar alterações':'Cadastrar produto'}</button>${editId?'<button type="button" class="btn gray" onclick="editId=null;buildAdmin()">Cancelar</button>':''}</div></form><hr><h3>Produtos cadastrados</h3><div class="admin-products">${db.products.sort((a,b)=>b.updated-a.updated).map(x=>`<div class="admin-card"><img src="${esc(x.img)}"><strong>${esc(x.name)}</strong><small>${esc(x.cat)} · ${money(x.price)}</small><div class="mini"><button class="primary" onclick="editP(${x.id})">Editar</button><button class="gray" onclick="renew(${x.id})">Renovar</button><button class="danger" onclick="delP(${x.id})">Excluir</button></div></div>`).join('')}</div><hr><h3>Categorias</h3><div class="cats-admin">${db.cats.filter(x=>x!=='Todos').map((c,i)=>`<div class="cat-admin"><span>${esc(c)}</span><button onclick="moveCat(${i},-1)">←</button><button onclick="moveCat(${i},1)">→</button><button onclick="delCat(${JSON.stringify(c)})">×</button></div>`).join('')}</div><div class="actions"><input id="newcat" placeholder="Nova categoria" style="padding:10px;border:1px solid #ccc;border-radius:6px"><button class="btn primary" onclick="addCat()">Adicionar categoria</button></div></div>`}
-async function submitP(e){e.preventDefault();let f=new FormData(e.target),img=f.get('img')||'',file=document.getElementById('file').files[0];if(file)img=await new Promise(r=>{let a=new FileReader();a.onload=()=>r(a.result);a.readAsDataURL(file)});let p={id:editId||Date.now(),name:f.get('name'),link:f.get('link'),price:+f.get('price'),old:+f.get('old'),cat:f.get('cat'),ship:f.get('ship'),install:f.get('install'),commission:+f.get('commission'),headline:f.get('headline'),desc:f.get('desc'),img,updated:Date.now()};db.products=editId?db.products.map(x=>x.id===editId?p:x):[...db.products,p];save();editId=null;buildAdmin();render();toast('Produto salvo.')}
+</form><hr><form id="pf"  onsubmit="submitP(event)"><div class="form">${field('Nome do produto','name',p.name)}${field('Link da oferta','link',p.link,'url')}${field('Preço atual','price',p.price,'number','step="0.01"')}${field('Preço original','old',p.old,'number','step="0.01"')}<div class="field"><label>Categoria</label><select name="cat">${db.cats.filter(x=>x!=='Todos').map(c=>`<option ${p.cat===c?'selected':''}>${esc(c)}</option>`).join('')}</select></div>${field('Frete / retirada grátis','ship',p.ship,'text','placeholder="Frete grátis, Retirada grátis ou ambos"')}${field('Parcelamento','install',p.install,'text','placeholder="Ex.: 3x R$ 67,54"')}${field('Comissão (%)','commission',p.commission,'number','step="0.01"')}${field('Frase de chamada','headline',p.headline)}${field('Desconto Pix (ex: 10% OFF no Pix)','pix_discount',p.pix_discount !== undefined ? p.pix_discount : '10% OFF no Pix')}${field('Etiqueta Promoção (ex: 20% OFF Saldo no Mercado Pago)','promo_tag',p.promo_tag !== undefined ? p.promo_tag : '20% OFF Saldo no Mercado Pago')}<div class="field"><label>Ativar selo FULL?</label><select name="is_full"><option value="yes" ${p.is_full !== false ? 'selected' : ''}>Sim (Ativo)</option><option value="no" ${p.is_full === false ? 'selected' : ''}>Não (Inativo)</option></select></div><div class="field full"><label>Foto por link</label><input name="img" value="${esc(p.img)}" placeholder="https://..."></div><div class="field full"><label>Upload de foto</label><input id="file" type="file" accept="image/*"></div><div class="field full"><label>Descrição</label><textarea name="desc">${esc(p.desc)}</textarea></div></div><div class="actions"><button class="btn primary">${editId?'Salvar alterações':'Cadastrar produto'}</button>${editId?'<button type="button" class="btn gray" onclick="editId=null;buildAdmin()">Cancelar</button>':''}</div></form><hr><h3>Produtos cadastrados</h3><div class="admin-products">${db.products.sort((a,b)=>b.updated-a.updated).map(x=>`<div class="admin-card"><img src="${esc(x.img)}"><strong>${esc(x.name)}</strong><small>${esc(x.cat)} · ${money(x.price)}</small><div class="mini"><button class="primary" onclick="editP(${x.id})">Editar</button><button class="gray" onclick="renew(${x.id})">Renovar</button><button class="danger" onclick="delP(${x.id})">Excluir</button></div></div>`).join('')}</div><hr><h3>Categorias</h3><div class="cats-admin">${db.cats.filter(x=>x!=='Todos').map((c,i)=>`<div class="cat-admin"><span>${esc(c)}</span><button onclick="moveCat(${i},-1)">←</button><button onclick="moveCat(${i},1)">→</button><button onclick="delCat(${JSON.stringify(c)})">×</button></div>`).join('')}</div><div class="actions"><input id="newcat" placeholder="Nova categoria" style="padding:10px;border:1px solid #ccc;border-radius:6px"><button class="btn primary" onclick="addCat()">Adicionar categoria</button></div><hr><h3>Gerenciar Slides do Banner</h3><form id="slideForm" onsubmit="event.preventDefault();addSlidePhoto()"><div class="form"><div class="field"><label>Adicionar Foto ao Slide por Link (URL)</label><input id="slideUrlInput" type="url" placeholder="https://..."></div><div class="field"><label>Enviar Foto para o Slide</label><input id="slideFileInput" type="file" accept="image/*"></div></div><div class="actions"><button class="btn primary">Adicionar ao Slide</button></div></form><div style="margin-top: 15px;"><h4>Fotos Atuais do Slide (${getSlides().length})</h4><div style="display: flex; gap: 10px; overflow-x: auto; padding: 10px 0;">${getSlides().map((src, idx) => `<div style="position: relative; min-width: 140px; border: 1px solid #ddd; border-radius: 8px; padding: 6px; background: #fafafa; text-align: center;"><img src="${esc(src)}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 4px;"><button type="button" class="btn danger" style="padding: 3px 6px; font-size: 11px; margin-top: 6px; width: 100%;" onclick="removeSlidePhoto(${idx})">Excluir</button></div>`).join('')}</div></div></div>`}
+async function submitP(e){e.preventDefault();let f=new FormData(e.target),img=f.get('img')||'',file=document.getElementById('file').files[0];if(file)img=await new Promise(r=>{let a=new FileReader();a.onload=()=>r(a.result);a.readAsDataURL(file)});let p={id:editId||Date.now(),name:f.get('name'),link:f.get('link'),price:+f.get('price'),old:+f.get('old'),cat:f.get('cat'),ship:f.get('ship'),install:f.get('install'),commission:+f.get('commission'),headline:f.get('headline'),desc:f.get('desc'),pix_discount:f.get('pix_discount')||'10% OFF no Pix',promo_tag:f.get('promo_tag')||'20% OFF Saldo no Mercado Pago',is_full:f.get('is_full')==='yes',img,updated:Date.now()};db.products=editId?db.products.map(x=>x.id===editId?p:x):[...db.products,p];save();editId=null;buildAdmin();render();toast('Produto salvo.')}
 function editP(id){editId=id;buildAdmin()}function renew(id){db.products=db.products.map(p=>p.id===id?{...p,updated:Date.now()}:p);save();buildAdmin();render();toast('Produto renovado e colocado em primeiro.')}function delP(id){if(confirm('Excluir este produto?')){db.products=db.products.filter(p=>p.id!==id);save();buildAdmin();render()}}
 function addCat(){let x=newcat.value.trim();if(!x||db.cats.includes(x))return;db.cats.push(x);save();buildAdmin();renderCats()}function delCat(c){if(db.products.some(p=>p.cat===c))return alert('A categoria possui produtos. Mova-os antes de excluir.');db.cats=db.cats.filter(x=>x!==c);save();buildAdmin();renderCats()}function moveCat(i,d){let a=db.cats.filter(x=>x!=='Todos'),j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];db.cats=['Todos',...a];save();buildAdmin();renderCats()}
+async function addSlidePhoto() {
+  let url = document.getElementById('slideUrlInput').value.trim();
+  let file = document.getElementById('slideFileInput').files[0];
+  if (file) {
+    url = await new Promise(r => {
+      let reader = new FileReader();
+      reader.onload = () => r(reader.result);
+      reader.readAsDataURL(file);
+    });
+  }
+  if (!url) return alert('Por favor, informe uma URL ou envie uma imagem.');
+  let list = getSlides();
+  list.push(url);
+  db.slides = list;
+  await save();
+  buildAdmin();
+  renderCarousel();
+  toast('Slide adicionado!');
+}
+async function removeSlidePhoto(idx) {
+  let list = getSlides();
+  if (list.length <= 1) return alert('O slide precisa de pelo menos uma imagem.');
+  list.splice(idx, 1);
+  db.slides = list;
+  await save();
+  buildAdmin();
+  renderCarousel();
+  toast('Slide removido!');
+}
 function parseCSV(text) {
   let lines = text.split(/\r?\n/);
   if (lines.length === 0) return [];
@@ -256,6 +313,9 @@ function parseCSV(text) {
       commission: commIdx !== -1 ? parseFloat(cols[commIdx]) || 0 : 0,
       headline: headlineIdx !== -1 ? cols[headlineIdx] : '',
       desc: descIdx !== -1 ? cols[descIdx] : '',
+      pix_discount: '10% OFF no Pix',
+      promo_tag: '20% OFF Saldo no Mercado Pago',
+      is_full: true,
       img: imgIdx !== -1 && cols[imgIdx] ? cols[imgIdx] : 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',
       updated: Date.now()
     };
