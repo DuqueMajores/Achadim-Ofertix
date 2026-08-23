@@ -1,0 +1,17 @@
+{
+  "name": "ofertix-achadinhos",
+  "version": "1.0.0",
+  "description": "Ofertix — Achadinhos",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'No build step required'",
+    "lint": "echo 'No lint script configured'"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "firebase-admin": "^14.3.0"
+  }
+}

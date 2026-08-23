@@ -1,0 +1,7 @@
+{
+  "name": "Ofertix — Achadinhos",
+  "description": "Uma vitrine de achadinhos e ofertas com painel de administração local.",
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
