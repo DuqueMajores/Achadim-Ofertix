@@ -14,49 +14,88 @@
 .brand-preview img{max-height:58px;max-width:240px;object-fit:contain}
 .brand-preview .brand-text{font-size:28px;font-weight:900;color:#333}
 @media(max-width:700px){.carousel{width:100%;margin-left:0;border-radius:10px}.slide-btn{width:36px;height:36px;font-size:20px}}
-</style></head><body>
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head><body>
 <header><div id="siteLogo" class="logo">OFERTIX</div><div class="search"><input id="search" placeholder="Buscar nos meus achadinhos..."><button onclick="render()">⌕</button></div></header>
 <main class="wrap"><section id="carousel" class="carousel"></section><div id="cats" class="cats"></div><div id="products" class="grid"></div></main><div id="admin"></div><div id="toast" class="toast"></div>
 <script>
-const DB='ofertix_db';let db=JSON.parse(localStorage.getItem(DB)||'null')||{site:{name:'OFERTIX',logo:''},cats:['Todos','Eletrônicos','Casa','Moda','Beleza','Ofertas'],products:[{id:1,name:'Fone Bluetooth Premium',link:'https://mercadolivre.com.br/',price:89.9,old:129.9,cat:'Eletrônicos',ship:'Frete grátis',install:'12x de R$ 8,99',commission:5,headline:'Excelente custo-benefício',desc:'Produto demonstrativo do protótipo.',img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',updated:Date.now()}]};let active='Todos',editId=null,slideTimer=null,slideIndex=0;db.site=db.site||{name:'OFERTIX',logo:''};db.cats=db.cats||['Todos'];db.products=db.products||[];const save=async()=>{
+// Firebase Client Configuration - 100% Real Integration
+const firebaseConfig = {
+  apiKey: "AIzaSyA7ebkGcQsVGaJq6cY1tSeNrj5x1GM9Kqs",
+  authDomain: "ofertix-mercadolivre.firebaseapp.com",
+  projectId: "ofertix-mercadolivre",
+  storageBucket: "ofertix-mercadolivre.firebasestorage.app",
+  messagingSenderId: "707711652803",
+  appId: "1:707711652803:web:3b8c436b8a836873b3e376"
+};
+firebase.initializeApp(firebaseConfig);
+const fdb = firebase.firestore();
+
+const DB='ofertix_db';let db=JSON.parse(localStorage.getItem(DB)||'null')||{site:{name:'OFERTIX',logo:''},cats:['Todos','Eletrônicos','Casa','Moda','Beleza','Ofertas'],products:[{id:1,name:'Fone Bluetooth Premium',link:'https://mercadolivre.com.br/',price:89.9,old:129.9,cat:'Eletrônicos',ship:'Frete grátis',install:'12x de R$ 8,99',commission:5,headline:'Excelente custo-benefício',desc:'Produto demonstrativo do protótipo.',img:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80',updated:Date.now()}]};let active='Todos',editId=null,slideTimer=null,slideIndex=0;db.site=db.site||{name:'OFERTIX',logo:''};db.cats=db.cats||['Todos'];db.products=db.products||[];
+
+const save=async()=>{
   localStorage.setItem(DB,JSON.stringify(db));
   try {
-    const res = await fetch('/api/db', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(db)
+    // 1. Save site metadata
+    await fdb.collection('metadata').doc('site').set(db.site);
+    
+    // 2. Save categories
+    await fdb.collection('metadata').doc('cats').set({ list: db.cats });
+    
+    // 3. Save products
+    const batch = fdb.batch();
+    db.products.forEach(p => {
+      const docRef = fdb.collection('products').doc(String(p.id));
+      batch.set(docRef, p);
     });
-    if (!res.ok) {
-      const errData = await res.json().catch(() => ({}));
-      throw new Error(errData.error || 'Failed to save database state to cloud.');
-    }
-    toast('Sincronizado com a nuvem!');
+    
+    // Delete orphan products from Firestore
+    const snapshot = await fdb.collection('products').get();
+    const activeIds = db.products.map(p => String(p.id));
+    snapshot.forEach(doc => {
+      if (!activeIds.includes(doc.id)) {
+        batch.delete(doc.ref);
+      }
+    });
+    
+    await batch.commit();
+    toast('Sincronizado com o Firebase!');
   } catch (err) {
-    console.error('Cloud save failed:', err);
+    console.error('Firestore save failed:', err);
     toast('Erro de Sincronização: ' + err.message);
   }
 };
+
 async function syncFromCloud() {
   try {
-    const res = await fetch('/api/db');
-    if (res.ok) {
-      const cloudDb = await res.json();
-      if (cloudDb && cloudDb.uninitialized) {
-        console.log('Cloud DB is uninitialized. Uploading current state to seed...');
-        await save();
-        return;
-      }
-      if (cloudDb && cloudDb.site && cloudDb.products && cloudDb.cats) {
-        db = cloudDb;
-        localStorage.setItem(DB, JSON.stringify(db));
-        renderBrand();
-        renderCats();
-        render();
-        if (admin.style.display === 'block') buildAdmin();
-      }
+    const siteDoc = await fdb.collection('metadata').doc('site').get();
+    const catsDoc = await fdb.collection('metadata').doc('cats').get();
+    const productsSnapshot = await fdb.collection('products').get();
+    
+    // Auto-seed if database is brand new
+    if (!siteDoc.exists && !catsDoc.exists && productsSnapshot.empty) {
+      console.log('Novo Firebase vazio. Semeando estado inicial...');
+      await save();
+      return;
     }
+    
+    const site = siteDoc.exists ? siteDoc.data() : { name: 'OFERTIX', logo: '' };
+    const cats = catsDoc.exists ? catsDoc.data().list : ['Todos', 'Eletrônicos', 'Casa', 'Moda', 'Beleza', 'Ofertas'];
+    const products = [];
+    productsSnapshot.forEach(doc => {
+      products.push(doc.data());
+    });
+    
+    db = { site, cats, products };
+    localStorage.setItem(DB, JSON.stringify(db));
+    renderBrand();
+    renderCats();
+    render();
+    if (admin.style.display === 'block') buildAdmin();
   } catch (err) {
-    console.error('Cloud sync failed:', err);
+    console.error('Firestore sync failed:', err);
   }
 }
 const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));const money=x=>Number(x||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
