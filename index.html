@@ -165,8 +165,48 @@ function formatPriceHTML(val) {
   return `R$ ${integerPart}<sup style="font-size: 12px; font-weight: 500; vertical-align: super; position: relative; top: -0.35em; margin-left: 1.5px;">${centsPart}</sup>`;
 }
 function render(){
-  let q=search.value.toLowerCase(),
-      arr=db.products.filter(p=>(active==='Todos'||p.cat===active)&&(!q||JSON.stringify(p).toLowerCase().includes(q))).sort((a,b)=>b.updated-a.updated);
+  let q=search.value.trim().toLowerCase();
+  let arr = [];
+  if (!q) {
+    arr = db.products.filter(p => (active === 'Todos' || p.cat === active)).sort((a,b) => b.updated - a.updated);
+  } else {
+    let baseProducts = db.products;
+    let words = q.split(/\s+/).filter(w => w.length >= 2);
+    if (words.length === 0) words = [q];
+    
+    // Group A (Direct Name Matches)
+    let groupA = baseProducts.filter(p => p.name.toLowerCase().includes(q));
+    
+    // Group B (Similar Matches - not in A, but name contains individual query words or string contains query)
+    let groupB = baseProducts.filter(p => {
+      if (groupA.some(x => x.id === p.id)) return false;
+      let nameLower = p.name.toLowerCase();
+      let matchesWords = words.some(w => nameLower.includes(w));
+      let matchesFullJSON = JSON.stringify(p).toLowerCase().includes(q);
+      return matchesWords || matchesFullJSON;
+    });
+    
+    // Group C (Same Category - not in A or B, but has the same category as any in A or B)
+    let matchedCats = new Set([...groupA, ...groupB].map(p => p.cat));
+    let groupC = baseProducts.filter(p => {
+      let isAlreadyMatched = groupA.some(x => x.id === p.id) || groupB.some(x => x.id === p.id);
+      return !isAlreadyMatched && matchedCats.has(p.cat);
+    });
+    
+    // If an active category filter is active (not 'Todos'), restrict the overall output to that category
+    if (active !== 'Todos') {
+      groupA = groupA.filter(p => p.cat === active);
+      groupB = groupB.filter(p => p.cat === active);
+      groupC = groupC.filter(p => p.cat === active);
+    }
+    
+    // Sort each group individually by updated date descending
+    groupA.sort((a,b) => b.updated - a.updated);
+    groupB.sort((a,b) => b.updated - a.updated);
+    groupC.sort((a,b) => b.updated - a.updated);
+    
+    arr = [...groupA, ...groupB, ...groupC];
+  }
   
   products.innerHTML=arr.length?arr.map(p=>{
     let pix_desc = p.pix_discount !== undefined ? p.pix_discount : '10% OFF no Pix';
@@ -359,7 +399,32 @@ async function importCSV(event) {
   reader.readAsText(file, 'utf-8');
 }
 
-search.addEventListener('input',render);renderBrand();renderCarousel();renderCats();render();setTimeout(adminOpen,80);
+// Load query params
+const urlParams = new URLSearchParams(window.location.search);
+const searchParam = urlParams.get('search') || urlParams.get('q');
+if (searchParam) {
+  search.value = searchParam;
+}
+
+// Search input handler with History State API
+search.addEventListener('input', () => {
+  let val = search.value.trim();
+  let url = new URL(window.location.href);
+  if (val) {
+    url.searchParams.set('search', val);
+  } else {
+    url.searchParams.delete('search');
+    url.searchParams.delete('q'); // clean up any old 'q' parameters too
+  }
+  history.replaceState(null, '', url.pathname + url.search);
+  render();
+});
+
+renderBrand();
+renderCarousel();
+renderCats();
+render();
+setTimeout(adminOpen,80);
 syncFromCloud();
 setInterval(syncFromCloud, 10000);
 </script></body></html>
