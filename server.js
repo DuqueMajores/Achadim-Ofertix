@@ -44,6 +44,11 @@ app.get('/api/db', async (req, res) => {
 
     const [siteDoc, catsDoc] = await Promise.all([siteRef.get(), catsRef.get()]);
 
+    // If Firestore is completely brand new and empty, notify the client so it can seed the cloud
+    if (!siteDoc.exists && !catsDoc.exists && productsSnapshot.empty) {
+      return res.json({ uninitialized: true });
+    }
+
     const site = siteDoc.exists ? siteDoc.data() : { name: 'OFERTIX', logo: '' };
     const cats = catsDoc.exists ? catsDoc.data().list : ['Todos', 'Eletrônicos', 'Casa', 'Moda', 'Beleza', 'Ofertas'];
     

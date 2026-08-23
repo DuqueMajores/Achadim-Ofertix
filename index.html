@@ -37,6 +37,11 @@ async function syncFromCloud() {
     const res = await fetch('/api/db');
     if (res.ok) {
       const cloudDb = await res.json();
+      if (cloudDb && cloudDb.uninitialized) {
+        console.log('Cloud DB is uninitialized. Uploading current state to seed...');
+        await save();
+        return;
+      }
       if (cloudDb && cloudDb.site && cloudDb.products && cloudDb.cats) {
         db = cloudDb;
         localStorage.setItem(DB, JSON.stringify(db));
