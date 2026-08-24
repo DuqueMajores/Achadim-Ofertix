@@ -10,32 +10,32 @@
 .slide-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#ffffffdd;color:#222;font-size:24px;cursor:pointer;box-shadow:0 2px 10px #0003;z-index:2;opacity:0;transition:opacity 0.2s ease-in-out}
 .carousel:hover .slide-btn{opacity:1}
 .slide-btn.prev{left:14px}.slide-btn.next{right:14px}
-.dots{position:absolute;left:50%;bottom:135px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;z-index:2}
+.dots{display:none !important}
 .dot{width:8px;height:8px;border:1.5px solid rgba(255,255,255,0.95);border-radius:50%;padding:0;background:rgba(0,0,0,0.22);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,0.3);transition:all 0.2s ease}
 .dot.on{width:10px;height:10px;border:1.5px solid #fff;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.45)}
 .brand-preview{display:flex;align-items:center;justify-content:center;min-height:58px;padding:10px;background:#fff8c9;border:1px dashed #bbb;border-radius:8px;margin-top:8px}
 .brand-preview img{max-height:58px;max-width:240px;object-fit:contain}
 .brand-preview .brand-text{font-size:28px;font-weight:900;color:#333}
-@media(max-width:700px){.carousel{width:100%}.slide-btn{width:36px;height:36px;font-size:20px;opacity:1}.dots{bottom:115px}}
+@media(max-width:700px){.carousel{width:100%}.slide-btn{width:36px;height:36px;font-size:20px}}
 
 .banner-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 165px;
+  margin-bottom: 185px;
 }
 @media(max-width: 1024px) {
   .banner-wrapper {
-    margin-bottom: 160px;
+    margin-bottom: 200px;
   }
 }
 @media(max-width: 700px) {
   .banner-wrapper {
-    margin-bottom: 195px;
+    margin-bottom: 205px;
   }
 }
 .overlaid-cards {
   position: absolute;
-  bottom: -140px;
+  bottom: -160px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -54,6 +54,7 @@
 @media(max-width: 1024px) {
   .overlaid-cards {
     width: 95%;
+    bottom: -175px;
     justify-content: flex-start;
   }
 }
