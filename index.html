@@ -3,13 +3,13 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--d)}
 header{background:var(--y);padding:14px 0;position:sticky;top:0;z-index:1000;box-shadow:0 1px 2px 0 rgba(0,0,0,0.1);display:block;transition:background-color 0.2s}
-.header-container{max-width:1250px;margin:0 auto;padding:0 5%}
-.header-top{display:flex;align-items:center;width:100%;justify-content:space-between;gap:24px}
-.logo{font-size:28px;font-weight:900;color:#333;display:flex;align-items:center}
-.logo img{max-height:42px;max-width:220px;object-fit:contain}
+.header-container{max-width:1250px;margin:0 auto;padding:0 5%;transition:padding 0.2s}
+.header-top{display:flex;align-items:center;width:100%;justify-content:space-between;gap:24px;transition:gap 0.2s}
+.logo{font-size:28px;font-weight:900;color:#333;display:flex;align-items:center;flex-shrink:0;transition:font-size 0.2s}
+.logo img{max-height:42px;max-width:220px;object-fit:contain;transition:max-height 0.2s}
 .search{flex:1;display:flex;max-width:850px}
-.search input{flex:1;padding:12px 14px;border:0;border-radius:6px 0 0 6px;font-size:15px;outline:none}
-.search button{width:55px;border:0;background:#fff;border-left:1px solid #ddd;border-radius:0 6px 6px 0;cursor:pointer;font-size:18px}
+.search input{flex:1;padding:12px 14px;border:0;border-radius:6px 0 0 6px;font-size:15px;outline:none;transition:padding 0.2s, font-size 0.2s}
+.search button{width:55px;border:0;background:#fff;border-left:1px solid #ddd;border-radius:0 6px 6px 0;cursor:pointer;font-size:18px;transition:width 0.2s, font-size 0.2s}
 
 .wrap{max-width:1250px;margin:auto;padding:24px 5%}
 .cats{display:flex;gap:8px;overflow-x:auto;padding:8px 0 16px 0;scrollbar-width:none;margin-bottom:12px}
@@ -82,12 +82,77 @@ header{background:var(--y);padding:14px 0;position:sticky;top:0;z-index:1000;box
 .brand-preview img{max-height:58px;max-width:240px;object-fit:contain}
 .brand-preview .brand-text{font-size:28px;font-weight:900;color:#333}
 
-@media(max-width:700px){
-  .header-top{gap:12px}
-  .logo{font-size:22px}
-  .search input{padding:10px;font-size:14px}
+.scroll-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--b);
+  border: 1px solid #eef2f6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s, color 0.2s;
+  transform: translateY(10px);
+}
+.scroll-to-top:hover {
+  background: var(--b);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(52, 131, 250, 0.25);
+}
+.scroll-to-top:active {
+  transform: translateY(0);
+}
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media(max-width:1024px){
+  .header-container{padding:0 4%}
+  .header-top{gap:16px}
+  .logo{font-size:24px}
+  .logo img{max-height:36px;max-width:160px}
+  .search input{padding:10px 12px;font-size:14px}
+  .search button{width:48px;font-size:16px}
+}
+
+@media(max-width:768px){
   .wrap{padding:16px 4%}
   .form{grid-template-columns:1fr}
+  .cats{gap:6px;padding:6px 0 12px 0;margin-bottom:8px}
+  .cat{padding:8px 16px;font-size:13px}
+}
+
+@media(max-width:576px){
+  .header-top{flex-direction:column;gap:12px;align-items:center}
+  .logo{font-size:22px;justify-content:center}
+  .logo img{max-height:36px;max-width:180px}
+  .search{width:100%;max-width:100%}
+  .search input{padding:10px 12px;font-size:14px}
+  .search button{width:48px;font-size:16px}
+  .cats{gap:6px;padding:4px 0 10px 0;margin-bottom:6px}
+  .cat{padding:7px 14px;font-size:12px}
+}
+
+@media(max-width:480px){
+  .header-container{padding:0 3%}
+  .scroll-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
 }
 </style>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -98,7 +163,7 @@ header{background:var(--y);padding:14px 0;position:sticky;top:0;z-index:1000;box
     <div class="header-top">
       <div id="siteLogo" class="logo">OFERTIX</div>
       <div class="search">
-        <input id="search" placeholder="Buscar nos meus achadinhos...">
+        <input id="search" placeholder="Buscar achadinho">
         <button onclick="render()">⌕</button>
       </div>
     </div>
@@ -323,8 +388,26 @@ header{background:var(--y);padding:14px 0;position:sticky;top:0;z-index:1000;box
   </div>
 </div>
 </div>
-<main class="wrap"><div id="cats" class="cats"></div><div id="products" class="grid"></div></main><div id="admin"></div><div id="toast" class="toast"></div>
+<main class="wrap"><div id="cats" class="cats"></div><div id="products" class="grid"></div></main><div id="admin"></div><div id="toast" class="toast"></div><button id="scrollToTopBtn" class="scroll-to-top" onclick="scrollToTop()" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
 <script>
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollToTopBtn');
+  if (btn) {
+    if (window.scrollY > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  }
+});
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
 function toggleDrawer(open) {
   const overlay = document.getElementById('drawerOverlay');
   const drawer = document.getElementById('mobileDrawer');
