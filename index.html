@@ -1,233 +1,365 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ofertix — Achadinhos</title><style>
-:root{--y:#ffe600;--b:#3483fa;--d:#222;--bg:#f5f5f5;--green:#00a650}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--d)}header{background:var(--y);padding:12px 0;display:flex;align-items:center;position:sticky;top:0;z-index:10}header>*{flex-shrink:0}header .logo{margin-left:max(5%,calc((100vw - 1250px)/2 + 5%));}header .search{margin-right:max(5%,calc((100vw - 1250px)/2 + 5%));margin-left:24px}.logo{font-size:28px;font-weight:900;color:#333}.search{flex:1;display:flex;max-width:850px}.search input{flex:1;padding:13px;border:0;border-radius:6px 0 0 6px;font-size:15px}.search button{width:55px;border:0;background:#fff;border-left:1px solid #ddd;border-radius:0 6px 6px 0}.wrap{max-width:1250px;margin:auto;padding:22px 5%}.hero{background:linear-gradient(120deg,#3483fa,#2459a9);color:white;border-radius:10px;padding:28px;margin-bottom:18px}.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:0}.cats{display:none}.cat{border:0;background:white;padding:9px 15px;border-radius:20px;white-space:nowrap}.cat.on{background:#3483fa;color:#fff}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.1);display:flex;flex-direction:column;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;color:inherit}.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.12)}.pic{height:220px;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px;border-bottom:1px solid #f0f0f0}.pic img{max-width:100%;max-height:100%;object-fit:contain}.info{padding:12px 14px;display:flex;flex-direction:column;gap:3px;flex-grow:1}.name{font-size:14px;color:#333;line-height:1.3;height:36px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:2px}.old{color:#999;text-decoration:line-through;font-size:12px;height:14px;margin-bottom:2px}.price-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.price{font-size:24px;font-weight:400;color:#333;margin:0;line-height:1.15}.price sup{font-size:12px;font-weight:400;position:relative;top:-0.35em;margin-left:1px}.pix-discount{color:#00a650;font-size:13px;font-weight:500;margin-top:1px;margin-bottom:1px}.install{color:#666;font-size:13px;margin-top:1px;margin-bottom:2px}.promo-badge{display:inline-block;color:#3483fa;background:#e6f0ff;border-radius:3px;padding:3px 6px;font-size:11px;font-weight:700;width:fit-content;margin-top:2px;margin-bottom:2px}.ship-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;min-height:18px}.ship-text{color:#00a650;font-size:13px;font-weight:bold}.full-badge{color:#00a650;font-weight:900;font-style:italic;font-size:13px;display:inline-flex;align-items:center;gap:2px}.headline{color:#888;font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.empty{grid-column:1/-1;text-align:center;padding:50px;color:#777}#admin{display:none;position:fixed;inset:0;background:#0008;z-index:20;overflow:auto}.modal{background:#fff;max-width:1100px;margin:25px auto;border-radius:12px;padding:22px}.close{float:right;border:0;background:#eee;padding:8px 12px;border-radius:6px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-weight:700;font-size:13px}.field input,.field select,.field textarea{padding:10px;border:1px solid #ccc;border-radius:6px}.field textarea{min-height:90px}.btn{border:0;border-radius:6px;padding:10px 15px}.primary{background:#3483fa;color:#fff}.gray{background:#eee}.danger{background:#ffe9e9;color:#b00020}.actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}.admin-products{display:flex;gap:12px;overflow-x:auto;padding:12px 0}.admin-card{min-width:220px;border:1px solid #ddd;border-radius:8px;padding:9px;background:#fafafa}.admin-card img{width:100%;height:125px;object-fit:contain;background:white}.admin-card strong{display:block;font-size:14px;margin:7px 0}.admin-card small{color:#666}.mini{display:flex;gap:5px;margin-top:8px}.mini button{padding:7px;border:0;border-radius:5px}.cats-admin{display:flex;gap:8px;flex-wrap:wrap}.cat-admin{display:flex;align-items:center;gap:4px;background:#eee;border-radius:7px;padding:7px}.cat-admin button{border:0;background:#fff;border-radius:4px;padding:3px 6px}.toast{display:none;position:fixed;right:20px;bottom:20px;background:#222;color:#fff;padding:12px 16px;border-radius:7px;z-index:40}@media(max-width:700px){header{flex-wrap:wrap}.search{order:3;flex-basis:100%}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.grid{grid-template-columns:repeat(2,1fr);gap:8px}.pic{height:150px;padding:6px}.info{padding:8px 10px;gap:2px}.name{font-size:12px;height:32px;-webkit-line-clamp:2;margin-bottom:1px}.old{font-size:11px;height:12px;margin-bottom:1px}.price{font-size:18px}.price sup{font-size:10px}.pix-discount{font-size:11px}.install{font-size:11px}.promo-badge{font-size:10px;padding:2px 4px;margin-top:1px;margin-bottom:1px}.ship-text,.full-badge{font-size:11px}.headline{font-size:10px}}
+:root{--y:#ffe600;--b:#3483fa;--d:#222;--bg:#f5f5f5;--green:#00a650}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--d)}
+header{background:var(--y);padding:14px 0;position:sticky;top:0;z-index:1000;box-shadow:0 1px 2px 0 rgba(0,0,0,0.1);display:block;transition:background-color 0.2s}
+.header-container{max-width:1250px;margin:0 auto;padding:0 5%}
+.header-top{display:flex;align-items:center;width:100%;justify-content:space-between;gap:24px}
+.logo{font-size:28px;font-weight:900;color:#333;display:flex;align-items:center}
+.logo img{max-height:42px;max-width:220px;object-fit:contain}
+.search{flex:1;display:flex;max-width:850px}
+.search input{flex:1;padding:12px 14px;border:0;border-radius:6px 0 0 6px;font-size:15px;outline:none}
+.search button{width:55px;border:0;background:#fff;border-left:1px solid #ddd;border-radius:0 6px 6px 0;cursor:pointer;font-size:18px}
 
-.carousel{position:relative;width:100%;margin:0 auto;height:clamp(190px,26vw,325px);overflow:hidden;background:#ddd}
-.carousel::after{content:'';position:absolute;left:0;right:0;bottom:0;height:clamp(40px,8vw,70px);background:linear-gradient(to bottom,rgba(245,245,245,0) 0%,#f5f5f5 100%);pointer-events:none;z-index:2}
-@media(min-width:1024px){.carousel{width:80%;max-width:1250px}}
-.slides{height:100%;display:flex;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
-.slide{min-width:100%;height:100%;position:relative}
-.slide img{width:100%;height:100%;display:block;object-fit:cover}.slide:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 42%,rgba(0,0,0,.10) 62%,rgba(0,0,0,.58) 100%);pointer-events:none}
-.slide-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:#ffffffdd;color:#222;font-size:24px;cursor:pointer;box-shadow:0 2px 10px #0003;z-index:2;opacity:0;transition:opacity 0.2s ease-in-out}
-.carousel:hover .slide-btn{opacity:1}
-.slide-btn.prev{left:14px}.slide-btn.next{right:14px}
-.dots{display:none !important}
-.dot{width:8px;height:8px;border:1.5px solid rgba(255,255,255,0.95);border-radius:50%;padding:0;background:rgba(0,0,0,0.22);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,0.3);transition:all 0.2s ease}
-.dot.on{width:10px;height:10px;border:1.5px solid #fff;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.45)}
+.wrap{max-width:1250px;margin:auto;padding:24px 5%}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:8px 0 16px 0;scrollbar-width:none;margin-bottom:12px}
+.cats::-webkit-scrollbar{display:none}
+.cat{border:0;background:white;padding:9px 18px;border-radius:20px;white-space:nowrap;cursor:pointer;font-size:14px;font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,0.06);transition:all 0.2s ease;color:#333}
+.cat:hover{background:#eef2f6}
+.cat.on{background:#3483fa;color:#fff;font-weight:bold}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+
+.card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #eef2f6;display:flex;flex-direction:column;cursor:pointer;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s ease;text-decoration:none;color:inherit;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,0.08)}
+.pic{height:220px;background:#fff;display:flex;align-items:center;justify-content:center;padding:16px;border-bottom:1px solid #f0f4f8;overflow:hidden}
+@media(max-width:700px){.pic{height:160px;padding:8px}}
+.pic img{max-width:100%;max-height:100%;object-fit:contain;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}
+.card:hover .pic img{transform:scale(1.06)}
+.info{padding:16px;display:flex;flex-direction:column;gap:4px;flex-grow:1}
+@media(max-width:700px){.info{padding:10px}}
+.name{font-size:14px;color:#333;line-height:1.4;height:36px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;margin-bottom:4px;font-weight:500}
+@media(max-width:700px){.name{font-size:12px;height:32px;line-height:1.3}}
+.old{color:#999;text-decoration:line-through;font-size:12px;height:14px;margin-bottom:2px}
+@media(max-width:700px){.old{font-size:11px;height:12px}}
+.price-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.price{font-size:24px;font-weight:600;color:#333;margin:0;line-height:1.15}
+.price sup{font-size:12px;font-weight:500;position:relative;top:-0.35em;margin-left:1.5px}
+@media(max-width:700px){.price{font-size:18px}.price sup{font-size:10px}}
+.pix-discount{color:#00a650;font-size:13px;font-weight:600;margin-top:2px}
+@media(max-width:700px){.pix-discount{font-size:11px}}
+.install{color:#666;font-size:13px}
+@media(max-width:700px){.install{font-size:11px}}
+.promo-badge{display:inline-block;color:#3483fa;background:#e6f0ff;border-radius:4px;padding:3px 8px;font-size:11px;font-weight:700;width:fit-content;margin:4px 0}
+@media(max-width:700px){.promo-badge{font-size:10px;padding:2px 6px}}
+.ship-container{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px;min-height:18px}
+.ship-text{color:#00a650;font-size:13px;font-weight:700}
+.full-badge{color:#00a650;font-weight:900;font-style:italic;font-size:13px;display:inline-flex;align-items:center;gap:2px}
+@media(max-width:700px){.ship-text,.full-badge{font-size:11px}}
+.headline{color:#888;font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-btn{background:#3483fa;color:#fff;border:none;border-radius:6px;padding:10px 0;font-size:13px;font-weight:bold;text-align:center;margin-top:10px;transition:background 0.2s}
+@media(max-width:700px){.card-btn{padding:7px 0;font-size:12px;margin-top:6px}}
+.card:hover .card-btn{background:#1e62c9}
+
+.empty{grid-column:1/-1;text-align:center;padding:50px;color:#777}
+#admin{display:none;position:fixed;inset:0;background:#0008;z-index:20;overflow:auto}
+.modal{background:#fff;max-width:1100px;margin:25px auto;border-radius:12px;padding:22px}
+.close{float:right;border:0;background:#eee;padding:8px 12px;border-radius:6px;cursor:pointer}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field.full{grid-column:1/-1}
+.field label{font-weight:700;font-size:13px}
+.field input,.field select,.field textarea{padding:10px;border:1px solid #ccc;border-radius:6px}
+.field textarea{min-height:90px}
+.btn{border:0;border-radius:6px;padding:10px 15px;cursor:pointer;font-weight:bold}
+.primary{background:#3483fa;color:#fff}
+.gray{background:#eee;color:#333}
+.danger{background:#ffe9e9;color:#b00020}
+.actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.admin-products{display:flex;gap:12px;overflow-x:auto;padding:12px 0}
+.admin-card{min-width:220px;border:1px solid #ddd;border-radius:8px;padding:9px;background:#fafafa}
+.admin-card img{width:100%;height:125px;object-fit:contain;background:white}
+.admin-card strong{display:block;font-size:14px;margin:7px 0}
+.admin-card small{color:#666}
+.mini{display:flex;gap:5px;margin-top:8px}
+.mini button{padding:7px;border:0;border-radius:5px;cursor:pointer}
+.cats-admin{display:flex;gap:8px;flex-wrap:wrap}
+.cat-admin{display:flex;align-items:center;gap:4px;background:#eee;border-radius:7px;padding:7px}
+.cat-admin button{border:0;background:#fff;border-radius:4px;padding:3px 6px;cursor:pointer}
+.toast{display:none;position:fixed;right:20px;bottom:20px;background:#222;color:#fff;padding:12px 16px;border-radius:7px;z-index:40}
 .brand-preview{display:flex;align-items:center;justify-content:center;min-height:58px;padding:10px;background:#fff8c9;border:1px dashed #bbb;border-radius:8px;margin-top:8px}
 .brand-preview img{max-height:58px;max-width:240px;object-fit:contain}
 .brand-preview .brand-text{font-size:28px;font-weight:900;color:#333}
-@media(max-width:700px){.carousel{width:100%}.slide-btn{width:36px;height:36px;font-size:20px}}
 
-.banner-wrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 185px;
-}
-@media(max-width: 1024px) {
-  .banner-wrapper {
-    margin-bottom: 200px;
-  }
-}
-@media(max-width: 700px) {
-  .banner-wrapper {
-    margin-bottom: 205px;
-  }
-}
-.overlaid-cards {
-  position: absolute;
-  bottom: -160px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1250px;
-  z-index: 10;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  overflow-x: auto;
-  padding: 8px 4px 20px 4px;
-  scrollbar-width: none;
-}
-.overlaid-cards::-webkit-scrollbar {
-  display: none;
-}
-@media(max-width: 1024px) {
-  .overlaid-cards {
-    width: 95%;
-    bottom: -175px;
-    justify-content: flex-start;
-  }
-}
-@media(max-width: 700px) {
-  .overlaid-cards {
-    width: 100%;
-    left: 0;
-    transform: none;
-    padding: 8px 16px 16px 16px;
-    bottom: -180px;
-    justify-content: flex-start;
-  }
-}
-
-.mini-card {
-  flex: 1;
-  min-width: 155px;
-  max-width: 190px;
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid #ededed;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
-  padding: 12px 14px 16px 14px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;
-  color: inherit;
-  font-family: Arial, sans-serif;
-}
-@media(max-width: 700px) {
-  .mini-card {
-    min-width: 125px;
-    max-width: 140px;
-    padding: 8px 10px;
-  }
-}
-.mini-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.mini-card-header {
-  font-size: 13px;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-@media(max-width: 700px) {
-  .mini-card-header {
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
-}
-.mini-card-pic {
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
-  background: #fff;
-}
-@media(max-width: 700px) {
-  .mini-card-pic {
-    height: 70px;
-    margin-bottom: 6px;
-  }
-}
-.mini-card-pic img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-.mini-card-name {
-  font-size: 12px;
-  color: #333;
-  line-height: 1.3;
-  height: 31px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  margin-bottom: 4px;
-}
-@media(max-width: 700px) {
-  .mini-card-name {
-    font-size: 11px;
-    height: 28px;
-  }
-}
-.mini-card-old {
-  font-size: 11px;
-  color: #999;
-  text-decoration: line-through;
-  height: 14px;
-  margin-bottom: 2px;
-}
-.mini-card-old.no-strike {
-  text-decoration: none;
-}
-.mini-card-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 6px;
-}
-.mini-card-price {
-  font-size: 18px;
-  font-weight: 400;
-  color: #333;
-}
-@media(max-width: 700px) {
-  .mini-card-price {
-    font-size: 16px;
-  }
-}
-.mini-card-discount {
-  font-size: 12px;
-  color: #00a650;
-  font-weight: 500;
-}
-@media(max-width: 700px) {
-  .mini-card-discount {
-    font-size: 10px;
-  }
-}
-.mini-card-ship-row {
-  font-size: 11px;
-  color: #00a650;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: auto;
-  min-height: 16px;
-}
-@media(max-width: 700px) {
-  .mini-card-ship-row {
-    font-size: 10px;
-  }
-}
-.mini-card-btn {
-  display: block;
-  width: 100%;
-  text-align: center;
-  background: #e6f0ff;
-  color: #3483fa;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 0;
-  font-size: 11px;
-  font-weight: bold;
-  margin-top: auto;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.mini-card-btn:hover {
-  background: #dbebff;
+@media(max-width:700px){
+  .header-top{gap:12px}
+  .logo{font-size:22px}
+  .search input{padding:10px;font-size:14px}
+  .wrap{padding:16px 4%}
+  .form{grid-template-columns:1fr}
 }
 </style>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head><body>
-<header><div id="siteLogo" class="logo">OFERTIX</div><div class="search"><input id="search" placeholder="Buscar nos meus achadinhos..."><button onclick="render()">⌕</button></div></header>
-<div class="banner-wrapper">
-  <section id="carousel" class="carousel"></section>
-  <div id="overlaid-cards" class="overlaid-cards"></div>
+<header>
+  <div class="header-container">
+    <div class="header-top">
+      <div id="siteLogo" class="logo">OFERTIX</div>
+      <div class="search">
+        <input id="search" placeholder="Buscar nos meus achadinhos...">
+        <button onclick="render()">⌕</button>
+      </div>
+    </div>
+  </div>
+</header>
+<div style="display:none" class="header-bottom">
+      <nav class="nav-links">
+        <div class="dropdown">
+          <a href="https://www.mercadolivre.com.br/categorias#menu=categories" class="nav-link" target="_blank">Categorias <span style="font-size: 10px; margin-left: 2px;">▾</span></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-sidebar">
+              <a href="https://www.mercadolivre.com.br/c/carros-motos-e-outros#menu=categories" target="_blank" class="sidebar-item">Veículos</a>
+              <a href="https://www.mercadolivre.com.br/supermercado/market#menu=categories" target="_blank" class="sidebar-item">Supermercado</a>
+              <div class="sidebar-item active">Tecnologia <span>▸</span></div>
+              <a href="https://meli.la/1VNG4kX" target="_blank" class="sidebar-item">Casa e Móveis</a>
+              <a href="https://meli.la/11Xc4ME" target="_blank" class="sidebar-item">Eletrodomésticos</a>
+              <a href="https://meli.la/1R3TEZE" target="_blank" class="sidebar-item">Esportes e Fitness</a>
+              <a href="https://meli.la/2cKgwv7" target="_blank" class="sidebar-item">Ferramentas</a>
+              <a href="https://meli.la/2LJbd2c" target="_blank" class="sidebar-item">Construção</a>
+              <a href="https://meli.la/2nuoUY7" target="_blank" class="sidebar-item">Indústria e Comércio</a>
+              <a href="https://www.mercadolivre.com.br/e/negocios" target="_blank" class="sidebar-item">Para seu Negócio</a>
+              <a href="https://meli.la/2omX9NE" target="_blank" class="sidebar-item">Pet Shop</a>
+              <a href="https://meli.la/1qmVUL2" target="_blank" class="sidebar-item">Saúde</a>
+              <a href="https://www.mercadolivre.com.br/c/acessorios-para-veiculos#menu=categories" target="_blank" class="sidebar-item">Acessórios para Veículos</a>
+              <a href="https://meli.la/2SDio3d" target="_blank" class="sidebar-item">Beleza e Cuidado Pessoal</a>
+              <a href="https://meli.la/1fchSfZ" target="_blank" class="sidebar-item">Moda</a>
+              <a href="https://www.mercadolivre.com.br/c/bebes#menu=categories" target="_blank" class="sidebar-item">Bebês</a>
+              <a href="https://meli.la/2s3kPPj" target="_blank" class="sidebar-item">Brinquedos</a>
+              <a href="https://www.mercadolivre.com.br/c/imoveis#menu=categories" target="_blank" class="sidebar-item">Imóveis</a>
+              <a href="https://www.mercadolivre.com.br/importados/compra-internacional#menu=categories&origin=home" target="_blank" class="sidebar-item">Internacional</a>
+              <a href="https://www.mercadolivre.com.br/produtos-sustentaveis#menu=categories" target="_blank" class="sidebar-item">Produtos Sustentáveis</a>
+              <a href="https://www.mercadolivre.com.br/mais-vendidos#menu=categories" target="_blank" class="sidebar-item">Mais Vendidos</a>
+              <a href="https://www.mercadolivre.com.br/l/lojas-oficiais#menu=categories" target="_blank" class="sidebar-item">Lojas Oficiais</a>
+              <a href="https://www.mercadolivre.com.br/categorias#menu=categories" target="_blank" class="sidebar-item">Ver mais Categorias</a>
+            </div>
+            <div class="dropdown-pane">
+              <div class="pane-title">Tecnologia</div>
+              <div class="pane-grid">
+                <div class="pane-column">
+                  <div class="pane-group">
+                    <a href="https://meli.la/28hC3fE" target="_blank" class="group-title">Celulares e Telefones</a>
+                    <div class="group-items">
+                      <a href="https://meli.la/2FHuBWY" target="_blank" class="group-item">Acessórios para Celulares</a>
+                      <a href="https://meli.la/1vmnqUV" target="_blank" class="group-item">Peças para Celular</a>
+                    </div>
+                  </div>
+                  <div class="pane-group">
+                    <a href="https://meli.la/11HoehU" target="_blank" class="group-title">Informática</a>
+                    <div class="group-items">
+                      <a href="https://meli.la/2vQqYri" target="_blank" class="group-item">Componentes para PC</a>
+                      <a href="https://meli.la/2rjVKhF" target="_blank" class="group-item">Impressão</a>
+                      <a href="https://meli.la/2ec1XZh" target="_blank" class="group-item">Acessórios para Notebook</a>
+                      <a href="https://meli.la/1k5zPs9" target="_blank" class="group-item">Conectividade e Redes</a>
+                      <a href="https://meli.la/2F76jmv" target="_blank" class="group-item">Softwares</a>
+                      <a href="https://meli.la/2vovmba" target="_blank" class="group-item">Computadores</a>
+                      <a href="https://meli.la/1vm1E8t" target="_blank" class="group-item">Tablets e Acessórios</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="pane-column">
+                  <div class="pane-group">
+                    <span class="group-title">Câmeras e Acessórios</span>
+                    <div class="group-items">
+                      <a href="https://meli.la/2qJdqTF" target="_blank" class="group-item">Acessórios para Câmeras</a>
+                      <a href="https://meli.la/1NuYNzq" target="_blank" class="group-item">Câmeras</a>
+                      <a href="https://meli.la/1DZj3xJ" target="_blank" class="group-item">Filmadoras</a>
+                    </div>
+                  </div>
+                  <div class="pane-group">
+                    <a href="https://meli.la/27pSh2P" target="_blank" class="group-title">Eletrônicos, Áudio e Vídeo</a>
+                    <div class="group-items">
+                      <a href="https://meli.la/1pSkhAY" target="_blank" class="group-item">Acessórios para Áudio e Vídeo</a>
+                      <a href="https://meli.la/1nUsVpq" target="_blank" class="group-item">Áudio Portátil e Acessórios</a>
+                      <a href="https://meli.la/1itvuJz" target="_blank" class="group-item">Componentes Eletrônicos</a>
+                      <a href="https://meli.la/1rD48gL" target="_blank" class="group-item">Equipamento para DJs</a>
+                      <a href="https://meli.la/1NiBE67" target="_blank" class="group-item">Som Automotivo</a>
+                      <a href="https://meli.la/2hATRE1" target="_blank" class="group-item">Drones e Acessórios</a>
+                      <a href="https://meli.la/1hf1CLD" target="_blank" class="group-item">Acessórios para TV</a>
+                      <a href="https://meli.la/1KBNptG" target="_blank" class="group-item">Fones de Ouvido</a>
+                      <a href="https://meli.la/1VUaYyW" target="_blank" class="group-item">Áudio</a>
+                      <a href="https://meli.la/2L7Qfkz" target="_blank" class="group-item">Projetores e Telas</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="pane-column">
+                  <div class="pane-group">
+                    <a href="https://www.mercadolivre.com.br/c/games#menu=categories" target="_blank" class="group-title">Games</a>
+                    <div class="group-items">
+                      <a href="https://meli.la/2WTgEaf" target="_blank" class="group-item">Vídeo Games</a>
+                      <a href="https://meli.la/1QZLvm2" target="_blank" class="group-item">Fliperamas e Arcade</a>
+                      <a href="https://meli.la/1YevRQH" target="_blank" class="group-item">Digitais</a>
+                    </div>
+                  </div>
+                  <div class="pane-group">
+                    <a href="https://meli.la/1kgMWLx" target="_blank" class="group-title">Televisores</a>
+                  </div>
+                  <div class="pane-group">
+                    <a href="https://meli.la/2TJeqNM" target="_blank" class="group-title">Studios</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="https://www.mercadolivre.com.br/ofertas#nav-header" class="nav-link" target="_blank">Ofertas</a>
+        <a href="https://www.mercadolivre.com.br/cupons?source_page=mperfil#nav-header" class="nav-link" target="_blank">Cupons</a>
+        <a href="https://www.mercadolivre.com.br/supermercado/market#nav-header" class="nav-link" target="_blank">Supermercado</a>
+        <a href="https://meli.la/1fchSfZ" class="nav-link" target="_blank">Moda</a>
+        <a href="https://play.mercadolivre.com.br/?origin=navigation_menu_web#nav-header" class="nav-link nav-play" target="_blank" style="padding-top: 5px;">
+          <span class="gratis-badge">GRÁTIS</span>
+          Mercado Play
+        </a>
+        <a href="https://www.mercadolivre.com.br/anuncie/bomni#nav-header" class="nav-link" target="_blank">Vender</a>
+        <a href="https://www.mercadolivre.com.br/ajuda#nav-header" class="nav-link" target="_blank">Contato</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<div style="display:none">
+<div id="drawerOverlay" class="drawer-overlay" onclick="toggleDrawer(false)"></div>
+<div id="mobileDrawer" class="drawer">
+  <div class="drawer-header">
+    <div class="logo">OFERTIX</div>
+    <button class="drawer-close" onclick="toggleDrawer(false)">×</button>
+  </div>
+  <div class="drawer-list">
+    <a href="https://www.mercadolivre.com.br/supermercado/market#nav-header" target="_blank" class="drawer-item">
+      <svg class="drawer-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      Supermercado
+    </a>
+    <a href="https://meli.la/1fchSfZ" target="_blank" class="drawer-item">
+      <svg class="drawer-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 4.34A2 2 0 0 0 19.16 4H14.8l-1.5-1.5a1 1 0 0 0-1.4 0L10.4 4H6.04a2 2 0 0 0-1.22.34L1.3 7a1 1 0 0 0 1 1.7L4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l1.7.7a1 1 0 0 0 1-1.7z"/></svg>
+      Moda
+    </a>
+    <a href="https://www.mercadolivre.com.br/mais-vendidos#menu=categories" target="_blank" class="drawer-item">
+      <svg class="drawer-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Mais vendidos
+      <span class="drawer-badge">NOVO</span>
+    </a>
+    <a href="https://www.mercadolivre.com.br/importados/compra-internacional#menu=categories&origin=home" target="_blank" class="drawer-item">
+      <svg class="drawer-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      Internacional
+      <span class="drawer-badge">NOVO</span>
+    </a>
+    <a href="https://www.mercadolivre.com.br/l/lojas-oficiais#menu=categories" target="_blank" class="drawer-item">
+      <svg class="drawer-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M3 11V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v5M9 11v-4a1 1 0 0 1 2 0v4M13 11v-4a1 1 0 0 1 2 0v4"/></svg>
+      Lojas oficiais
+    </a>
+    
+    <div class="drawer-divider"></div>
+    
+    <div class="drawer-item" onclick="toggleDrawerCategories(event)">
+      <svg class="drawer-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Categorias
+      <span id="drawerChevron" class="drawer-chevron">▼</span>
+    </div>
+    
+    <div id="drawerCategories" class="drawer-subcategories">
+      <a href="https://www.mercadolivre.com.br/c/carros-motos-e-outros#menu=categories" target="_blank" class="drawer-sub-item">Veículos</a>
+      <a href="https://www.mercadolivre.com.br/supermercado/market#menu=categories" target="_blank" class="drawer-sub-item">Supermercado</a>
+      
+      <div class="drawer-sub-item" onclick="toggleDrawerTecnologia(event)">
+        Tecnologia
+        <span id="drawerSubChevron" class="drawer-sub-chevron">▼</span>
+      </div>
+      
+      <div id="drawerTecnologia" class="drawer-sub-subcategories">
+        <a href="https://meli.la/28hC3fE" target="_blank" class="drawer-sub-sub-item">Celulares e Telefones</a>
+        <a href="https://meli.la/2FHuBWY" target="_blank" class="drawer-sub-sub-item">Acessórios para Celulares</a>
+        <a href="https://meli.la/1vmnqUV" target="_blank" class="drawer-sub-sub-item">Peças para Celular</a>
+        <a href="https://meli.la/11HoehU" target="_blank" class="drawer-sub-sub-item">Informática</a>
+        <a href="https://meli.la/2vQqYri" target="_blank" class="drawer-sub-sub-item">Componentes para PC</a>
+        <a href="https://meli.la/2rjVKhF" target="_blank" class="drawer-sub-sub-item">Impressão</a>
+        <a href="https://meli.la/2ec1XZh" target="_blank" class="drawer-sub-sub-item">Acessórios para Notebook</a>
+        <a href="https://meli.la/1k5zPs9" target="_blank" class="drawer-sub-sub-item">Conectividade e Redes</a>
+        <a href="https://meli.la/2F76jmv" target="_blank" class="drawer-sub-sub-item">Softwares</a>
+        <a href="https://meli.la/2vovmba" target="_blank" class="drawer-sub-sub-item">Computadores</a>
+        <a href="https://meli.la/1vm1E8t" target="_blank" class="drawer-sub-sub-item">Tablets e Acessórios</a>
+        <a href="https://meli.la/2TJeqNM" target="_blank" class="drawer-sub-sub-item">Studios</a>
+        <a href="https://meli.la/2qJdqTF" target="_blank" class="drawer-sub-sub-item">Acessórios para Câmeras</a>
+        <a href="https://meli.la/1NuYNzq" target="_blank" class="drawer-sub-sub-item">Câmeras</a>
+        <a href="https://meli.la/1DZj3xJ" target="_blank" class="drawer-sub-sub-item">Filmadoras</a>
+        <a href="https://meli.la/27pSh2P" target="_blank" class="drawer-sub-sub-item">Eletrônicos, Áudio e Vídeo</a>
+        <a href="https://meli.la/1pSkhAY" target="_blank" class="drawer-sub-sub-item">Acessórios para Áudio e Vídeo</a>
+        <a href="https://meli.la/1nUsVpq" target="_blank" class="drawer-sub-sub-item">Áudio Portátil e Acessórios</a>
+        <a href="https://meli.la/1itvuJz" target="_blank" class="drawer-sub-sub-item">Componentes Eletrônicos</a>
+        <a href="https://meli.la/1rD48gL" target="_blank" class="drawer-sub-sub-item">Equipamento para DJs</a>
+        <a href="https://meli.la/1NiBE67" target="_blank" class="drawer-sub-sub-item">Som Automotivo</a>
+        <a href="https://meli.la/2hATRE1" target="_blank" class="drawer-sub-sub-item">Drones e Acessórios</a>
+        <a href="https://meli.la/1hf1CLD" target="_blank" class="drawer-sub-sub-item">Acessórios para TV</a>
+        <a href="https://meli.la/1KBNptG" target="_blank" class="drawer-sub-sub-item">Fones de Ouvido</a>
+        <a href="https://meli.la/1VUaYyW" target="_blank" class="drawer-sub-sub-item">Áudio</a>
+        <a href="https://meli.la/2L7Qfkz" target="_blank" class="drawer-sub-sub-item">Projetores e Telas</a>
+        <a href="https://www.mercadolivre.com.br/c/games#menu=categories" target="_blank" class="drawer-sub-sub-item">Games</a>
+        <a href="https://meli.la/2WTgEaf" target="_blank" class="drawer-sub-sub-item">Vídeo Games</a>
+        <a href="https://meli.la/1QZLvm2" target="_blank" class="drawer-sub-sub-item">Fliperamas e Arcade</a>
+        <a href="https://meli.la/1YevRQH" target="_blank" class="drawer-sub-sub-item">Digitais</a>
+        <a href="https://meli.la/1kgMWLx" target="_blank" class="drawer-sub-sub-item">Televisores</a>
+      </div>
+      
+      <a href="https://meli.la/1VNG4kX" target="_blank" class="drawer-sub-item">Casa e Móveis</a>
+      <a href="https://meli.la/11Xc4ME" target="_blank" class="drawer-sub-item">Eletrodomésticos</a>
+      <a href="https://meli.la/1R3TEZE" target="_blank" class="drawer-sub-item">Esportes e Fitness</a>
+      <a href="https://meli.la/2cKgwv7" target="_blank" class="drawer-sub-item">Ferramentas</a>
+      <a href="https://meli.la/2LJbd2c" target="_blank" class="drawer-sub-item">Construção</a>
+      <a href="https://meli.la/2nuoUY7" target="_blank" class="drawer-sub-item">Indústria e Comércio</a>
+      <a href="https://www.mercadolivre.com.br/e/negocios" target="_blank" class="drawer-sub-item">Para seu Negócio</a>
+      <a href="https://meli.la/2omX9NE" target="_blank" class="drawer-sub-item">Pet Shop</a>
+      <a href="https://meli.la/1qmVUL2" target="_blank" class="drawer-sub-item">Saúde</a>
+      <a href="https://www.mercadolivre.com.br/c/acessorios-para-veiculos#menu=categories" target="_blank" class="drawer-sub-item">Acessórios para Veículos</a>
+      <a href="https://meli.la/2SDio3d" target="_blank" class="drawer-sub-item">Beleza e Cuidado Pessoal</a>
+      <a href="https://meli.la/1fchSfZ" target="_blank" class="drawer-sub-item">Moda</a>
+      <a href="https://www.mercadolivre.com.br/c/bebes#menu=categories" target="_blank" class="drawer-sub-item">Bebês</a>
+      <a href="https://meli.la/2s3kPPj" target="_blank" class="drawer-sub-item">Brinquedos</a>
+      <a href="https://www.mercadolivre.com.br/c/imoveis#menu=categories" target="_blank" class="drawer-sub-item">Imóveis</a>
+      <a href="https://www.mercadolivre.com.br/importados/compra-internacional#menu=categories&origin=home" target="_blank" class="drawer-sub-item">Internacional</a>
+      <a href="https://www.mercadolivre.com.br/produtos-sustentaveis#menu=categories" target="_blank" class="drawer-sub-item">Produtos Sustentáveis</a>
+      <a href="https://www.mercadolivre.com.br/mais-vendidos#menu=categories" target="_blank" class="drawer-sub-item">Mais Vendidos</a>
+      <a href="https://www.mercadolivre.com.br/l/lojas-oficiais#menu=categories" target="_blank" class="drawer-sub-item">Lojas Oficiais</a>
+      <a href="https://www.mercadolivre.com.br/categorias#menu=categories" target="_blank" class="drawer-sub-item">Ver mais Categorias</a>
+    </div>
+  </div>
+</div>
 </div>
 <main class="wrap"><div id="cats" class="cats"></div><div id="products" class="grid"></div></main><div id="admin"></div><div id="toast" class="toast"></div>
 <script>
+function toggleDrawer(open) {
+  const overlay = document.getElementById('drawerOverlay');
+  const drawer = document.getElementById('mobileDrawer');
+  if (open) {
+    overlay.style.display = 'block';
+    overlay.offsetHeight; // force reflow
+    overlay.classList.add('open');
+    drawer.classList.add('open');
+  } else {
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    setTimeout(() => {
+      if (!overlay.classList.contains('open')) {
+        overlay.style.display = 'none';
+      }
+    }, 300);
+  }
+}
+
+function toggleDrawerCategories(event) {
+  if (event) event.stopPropagation();
+  const cats = document.getElementById('drawerCategories');
+  const chev = document.getElementById('drawerChevron');
+  cats.classList.toggle('open');
+  chev.classList.toggle('rotated');
+}
+
+function toggleDrawerTecnologia(event) {
+  if (event) event.stopPropagation();
+  const tech = document.getElementById('drawerTecnologia');
+  const chev = document.getElementById('drawerSubChevron');
+  tech.classList.toggle('open');
+  chev.classList.toggle('rotated');
+}
+
 // Firebase Client Configuration - 100% Real Integration
 const firebaseConfig = {
   apiKey: "AIzaSyA7ebkGcQsVGaJq6cY1tSeNrj5x1GM9Kqs",
@@ -320,6 +452,7 @@ function renderBrand(){
   if(!el)return;
   if(db.site.logo) el.innerHTML=`<img src="${esc(db.site.logo)}" alt="${esc(db.site.name||'Logo')}" style="max-height:42px;max-width:220px;object-fit:contain">`;
   else el.textContent=db.site.name||'OFERTIX';
+  document.documentElement.style.setProperty('--y', db.site.headerColor || '#ffe600');
 }
 function getSlides() {
   if (!db.slides || !db.slides.length) {
@@ -356,7 +489,7 @@ function moveSlide(d){goSlide(slideIndex+d);}
 function saveSite(){
   const f=new FormData(document.getElementById('siteForm'));
   const file=document.getElementById('siteLogoFile').files[0];
-  const finish=(logo)=>{db.site={name:(f.get('siteName')||'OFERTIX').trim()||'OFERTIX',logo:logo||''};save();renderBrand();buildAdmin();toast('Identidade do site salva.');};
+  const finish=(logo)=>{db.site={name:(f.get('siteName')||'OFERTIX').trim()||'OFERTIX',logo:logo||'',headerColor:f.get('headerColor')||'#ffe600'};save();renderBrand();buildAdmin();toast('Identidade do site salva.');};
   if(file){const r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(file);}
   else finish(f.get('logoUrl')||db.site.logo);
 }
@@ -581,10 +714,11 @@ function buildAdmin(){let p=db.products.find(x=>x.id===editId)||{};admin.innerHT
 <div class="form">
 <div class="field"><label>Nome do site</label><input name="siteName" value="${esc(db.site.name||'OFERTIX')}" maxlength="60"></div>
 <div class="field"><label>Logo PNG por link (opcional)</label><input name="logoUrl" type="url" value="${esc(db.site.logo&&db.site.logo.startsWith('data:')?'':db.site.logo)}" placeholder="https://.../logo.png"></div>
+<div class="field"><label>Cor do cabeçalho</label><input name="headerColor" type="color" value="${esc(db.site.headerColor||'#ffe600')}" style="height: 42px; cursor: pointer;"></div>
 <div class="field full"><label>Enviar logo PNG</label><input id="siteLogoFile" type="file" accept="image/png"></div>
 </div>
 <div class="brand-preview">${db.site.logo?`<img src="${esc(db.site.logo)}" alt="Logo atual">`:`<span class="brand-text">${esc(db.site.name||'OFERTIX')}</span>`}</div>
-<div class="actions"><button class="btn primary">Salvar identidade</button><button type="button" class="btn gray" onclick="db.site={name:'OFERTIX',logo:''};save();renderBrand();buildAdmin();">Restaurar padrão</button></div>
+<div class="actions"><button class="btn primary">Salvar identidade</button><button type="button" class="btn gray" onclick="db.site={name:'OFERTIX',logo:'',headerColor:'#ffe600'};save();renderBrand();buildAdmin();">Restaurar padrão</button></div>
 </form><hr><form id="pf"  onsubmit="submitP(event)"><div class="form">${field('Nome do produto','name',p.name)}${field('Link da oferta','link',p.link,'url')}${field('Preço atual','price',p.price,'number','step="0.01"')}${field('Preço original','old',p.old,'number','step="0.01"')}<div class="field"><label>Categoria</label><select name="cat">${db.cats.filter(x=>x!=='Todos').map(c=>`<option ${p.cat===c?'selected':''}>${esc(c)}</option>`).join('')}</select></div>${field('Frete / retirada grátis','ship',p.ship,'text','placeholder="Frete grátis, Retirada grátis ou ambos"')}${field('Parcelamento','install',p.install,'text','placeholder="Ex.: 3x R$ 67,54"')}${field('Comissão (%)','commission',p.commission,'number','step="0.01"')}${field('Frase de chamada','headline',p.headline)}${field('Desconto Pix (ex: 10% OFF no Pix)','pix_discount',p.pix_discount !== undefined ? p.pix_discount : '10% OFF no Pix')}${field('Etiqueta Promoção (ex: 20% OFF Saldo no Mercado Pago)','promo_tag',p.promo_tag !== undefined ? p.promo_tag : '20% OFF Saldo no Mercado Pago')}<div class="field"><label>Ativar selo FULL?</label><select name="is_full"><option value="yes" ${p.is_full !== false ? 'selected' : ''}>Sim (Ativo)</option><option value="no" ${p.is_full === false ? 'selected' : ''}>Não (Inativo)</option></select></div><div class="field full"><label>Foto por link</label><input name="img" value="${esc(p.img)}" placeholder="https://..."></div><div class="field full"><label>Upload de foto</label><input id="file" type="file" accept="image/*"></div><div class="field full"><label>Descrição</label><textarea name="desc">${esc(p.desc)}</textarea></div></div><div class="actions"><button class="btn primary">${editId?'Salvar alterações':'Cadastrar produto'}</button>${editId?'<button type="button" class="btn gray" onclick="editId=null;buildAdmin()">Cancelar</button>':''}</div></form><hr><h3>Produtos cadastrados</h3><div class="admin-products">${db.products.sort((a,b)=>b.updated-a.updated).map(x=>`<div class="admin-card"><img src="${esc(x.img)}"><strong>${esc(x.name)}</strong><small>${esc(x.cat)} · ${money(x.price)}</small><div class="mini"><button class="primary" onclick="editP(${x.id})">Editar</button><button class="gray" onclick="renew(${x.id})">Renovar</button><button class="danger" onclick="delP(${x.id})">Excluir</button></div></div>`).join('')}</div><hr><h3>Categorias</h3><div class="cats-admin">${db.cats.filter(x=>x!=='Todos').map((c,i)=>`<div class="cat-admin"><span>${esc(c)}</span><button onclick="moveCat(${i},-1)">←</button><button onclick="moveCat(${i},1)">→</button><button onclick="delCat(${JSON.stringify(c)})">×</button></div>`).join('')}</div><div class="actions"><input id="newcat" placeholder="Nova categoria" style="padding:10px;border:1px solid #ccc;border-radius:6px"><button class="btn primary" onclick="addCat()">Adicionar categoria</button></div><hr><h3>Gerenciar Slides do Banner</h3><form id="slideForm" onsubmit="event.preventDefault();addSlidePhoto()"><div class="form"><div class="field"><label>Adicionar Foto ao Slide por Link (URL)</label><input id="slideUrlInput" type="url" placeholder="https://..."></div><div class="field"><label>Enviar Foto para o Slide</label><input id="slideFileInput" type="file" accept="image/*"></div></div><div class="actions"><button class="btn primary">Adicionar ao Slide</button></div></form><div style="margin-top: 15px;"><h4>Fotos Atuais do Slide (${getSlides().length})</h4><div style="display: flex; gap: 10px; overflow-x: auto; padding: 10px 0;">${getSlides().map((src, idx) => `<div style="position: relative; min-width: 140px; border: 1px solid #ddd; border-radius: 8px; padding: 6px; background: #fafafa; text-align: center;"><img src="${esc(src)}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 4px;"><button type="button" class="btn danger" style="padding: 3px 6px; font-size: 11px; margin-top: 6px; width: 100%;" onclick="removeSlidePhoto(${idx})">Excluir</button></div>`).join('')}</div></div></div>`}
 async function submitP(e){e.preventDefault();let f=new FormData(e.target),img=f.get('img')||'',file=document.getElementById('file').files[0];if(file)img=await new Promise(r=>{let a=new FileReader();a.onload=()=>r(a.result);a.readAsDataURL(file)});let p={id:editId||Date.now(),name:f.get('name'),link:f.get('link'),price:+f.get('price'),old:+f.get('old'),cat:f.get('cat'),ship:f.get('ship'),install:f.get('install'),commission:+f.get('commission'),headline:f.get('headline'),desc:f.get('desc'),pix_discount:f.get('pix_discount')||'10% OFF no Pix',promo_tag:f.get('promo_tag')||'20% OFF Saldo no Mercado Pago',is_full:f.get('is_full')==='yes',img,updated:Date.now()};db.products=editId?db.products.map(x=>x.id===editId?p:x):[...db.products,p];save();editId=null;buildAdmin();render();toast('Produto salvo.')}
 function editP(id){editId=id;buildAdmin()}function renew(id){db.products=db.products.map(p=>p.id===id?{...p,updated:Date.now()}:p);save();buildAdmin();render();toast('Produto renovado e colocado em primeiro.')}function delP(id){if(confirm('Excluir este produto?')){db.products=db.products.filter(p=>p.id!==id);save();buildAdmin();render()}}
